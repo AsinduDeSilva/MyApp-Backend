@@ -31,7 +31,7 @@ public class ImageController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getImage(@PathVariable(value = "id")int id) throws IOException {
+    public ResponseEntity<?> getImage(@PathVariable(value = "id")int id) throws IOException  {
         String imgUrl = repo.getImageById(id).getImgUrl();
         byte[] image = Files.readAllBytes(new File(imgUrl).toPath());
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/jpg")).body(image);
